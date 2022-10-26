@@ -2,13 +2,13 @@
 
     <form action="" method="POST" class="form" id="form-1">
       <h3 class="heading">Thành viên đăng ký</h3>
-      <p class="desc">Cùng nhau học lập trình miễn phí tại F8 ❤️</p>
+      <p class="desc">Fisrt HTML product</p>
   
       <div class="spacer"></div>
   
       <div class="form-group">
         <label for="fullname" class="form-label">Tên đầy đủ</label>
-        <input id="fullname" name="fullname" type="text" placeholder="VD: Sơn Đặng" class="form-control">
+        <input id="fullname" name="fullname" type="text" placeholder="VD: Noobmaster" class="form-control">
         <span class="form-message"></span>
       </div>
   
@@ -29,9 +29,29 @@
         <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
         <span class="form-message"></span>
       </div>
-  s
+  
       <button class="form-submit">Đăng ký</button>
       <link rel="stylesheet" href="maincss.css">
+      <script src="./main.js"></script>
+      <script>
+        validator({
+          form: '#form-1',
+          rules: [
+              validator.isRequired('#fullname'),
+              validator.minlength('#fullname',6),
+              validator.isRequired('#email'),
+              validator.isEmail('#email'),
+              validator.minlength('#password',6),
+              validator.confirm('#password_confirmation',function(){
+                return document.querySelector('#form-1 #password').value;
+              })
+          ],
+          onSubmit : function(data){
+            console.log(data)
+          }
+          
+      })
+      </script>
     </form>
   
   </div>
